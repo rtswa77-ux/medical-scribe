@@ -120,12 +120,11 @@ with gr.Blocks(title="AI Medical Scribe") as demo:
         inputs=[audio_input],
         outputs=[notes_output]
     )
-
     gr.Markdown("⚠️ *For clinical decision support only. Always verify before use in medical records.*")
 
-
 if __name__ == "__main__":
+    import os
+    os.environ["no_proxy"] = "localhost,127.0.0.1,::1"
     port = int(os.environ.get("PORT", 10000))
-    demo.launch(server_name="0.0.0.0", server_port=port)
-
+    demo.launch(server_name="0.0.0.0", server_port=port, share=False)
     
